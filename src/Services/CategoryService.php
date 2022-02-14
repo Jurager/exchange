@@ -16,7 +16,7 @@ use Jurager\Exchange\Interfaces\ModelBuilderInterface;
 use Jurager\Exchange\Interfaces\ProductInterface;
 use Jurager\Exchange\Interfaces\PriceTypeInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Jurager\Commerce\CommerceML;
+use Jurager\Commerce\Commerce;
 use Jurager\Commerce\Model\Product;
 
 /**
@@ -74,7 +74,7 @@ class CategoryService
     {
         $filename = basename($this->request->get('filename'));
 
-        $commerce = new CommerceML();
+        $commerce = new Commerce();
         $commerce->loadImportXml($this->config->getFullPath($filename));
 
         if ($commerce->classifier->xml) {
@@ -128,7 +128,7 @@ class CategoryService
     {
         $filename = basename($this->request->get('filename'));
 
-        $commerce = new CommerceML();
+        $commerce = new Commerce();
         $commerce->loadOffersXml($this->config->getFullPath($filename));
 
         $productClass = $this->getProductClass();
@@ -153,7 +153,7 @@ class CategoryService
     {
         $filename = basename($this->request->get('filename'));
 
-        $commerce = new CommerceML();
+        $commerce = new Commerce();
         $commerce->loadOffersXml($this->config->getFullPath($filename));
 
         $productClass = $this->getProductClass();
