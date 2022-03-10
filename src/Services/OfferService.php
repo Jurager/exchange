@@ -2,6 +2,7 @@
 
 namespace Jurager\Exchange\Services;
 
+use Jurager\Commerce\Commerce;
 use Jurager\Exchange\Config;
 use Jurager\Exchange\Events\AfterOffersSync;
 use Jurager\Exchange\Events\AfterUpdateOffer;
@@ -13,7 +14,6 @@ use Jurager\Exchange\Interfaces\ModelBuilderInterface;
 use Jurager\Exchange\Interfaces\OfferInterface;
 use Jurager\Exchange\Interfaces\ProductInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Jurager\Commerce\CommerceML;
 use Jurager\Commerce\Model\Offer;
 
 /**
@@ -65,7 +65,7 @@ class OfferService
     {
         $filename = basename($this->request->get('filename'));
         $this->_ids = [];
-        $commerce = new CommerceML();
+        $commerce = new Commerce();
         $commerce->loadOffersXml($this->config->getFullPath($filename));
         if ($offerClass = $this->getOfferClass()) {
             $offerClass::createPriceTypes1c($commerce->offerPackage->getPriceTypes());
@@ -107,6 +107,7 @@ class OfferService
 
         return $class::findProductBy1c($id);
     }
+
 
     /**
      * @param OfferInterface $model

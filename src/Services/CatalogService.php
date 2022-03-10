@@ -99,6 +99,9 @@ class CatalogService extends AbstractService
         if  (str_contains($filename, 'rest')) {
             $this->categoryService->rest();
         }
+        if  (strpos($filename ,'offers') !== false) {
+            $this->offerService->import();
+        }
 
         $response = "success\n";
         $response .= $this->config->getSessionName()."\n";
@@ -129,7 +132,7 @@ class CatalogService extends AbstractService
     public function complete(): string
     {
         $this->authService->auth();
-
+        $this->loaderService->clearImportDirectory();
         $this->categoryService->afterComplete();
 
         $response = "success\n";

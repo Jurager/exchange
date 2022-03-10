@@ -135,7 +135,7 @@ class CategoryService
 
         foreach ($commerce->offerPackage->getOffers() as $offer) {
 
-            $productId = $offer->getClearId();
+            $productId = $offer->id;
 
             $product = $productClass::findProductBy1c($productId);
 
@@ -160,7 +160,7 @@ class CategoryService
 
         foreach ($commerce->offerPackage->getOffers() as $offer) {
 
-            $productId = $offer->getClearId();
+            $productId = $offer->id;
             $product = $productClass::findProductBy1c($productId);
 
             if ($product) {
