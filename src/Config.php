@@ -192,7 +192,7 @@ class Config
      */
     public function setMerchant($merchant_id)
     {
-        $this->merchant_id = (string) $merchant_id;
+        $this->merchant_id = $merchant_id;
     }
 
     /**
@@ -200,6 +200,6 @@ class Config
      */
     public function getMerchant() : ?string
     {
-        return $this->merchant_id;
+        return (string) $this->merchant_id;
     }
 }
