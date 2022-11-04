@@ -1,4 +1,4 @@
-# Exchange
+# Jurager/Exchange
 [![Latest Stable Version](https://poser.pugx.org/jurager/exchange/v/stable)](https://packagist.org/packages/jurager/exchange)
 [![Total Downloads](https://poser.pugx.org/jurager/exchange/downloads)](https://packagist.org/packages/jurager/exchange)
 [![License](https://poser.pugx.org/jurager/exchange/license)](https://packagist.org/packages/jurager/exchange)
