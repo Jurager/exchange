@@ -37,8 +37,6 @@ class ImportController extends Controller
 
                 $response = $service->$mode();
 
-                Log::debug('exchange_1c: $response='."\n".$response);
-
                 return response($response, 200, ['Content-Type', 'text/plain']);
             }
 
