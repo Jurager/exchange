@@ -4,7 +4,7 @@ namespace Jurager\Exchange;
 
 use Jurager\Exchange\Interfaces\EventDispatcherInterface;
 use Jurager\Exchange\Interfaces\ModelBuilderInterface;
-use Jurager\Exchange\Console\Commands\PruneCommand;
+use Jurager\Exchange\Console\PruneCommand;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Console\Scheduling\Schedule;
