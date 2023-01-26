@@ -12,7 +12,7 @@ class PruneCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'catalog:prune';
+    protected $signature = 'exchange:prune';
 
     /**
      * The console command description.
