@@ -54,7 +54,7 @@ class Config
     /**
      * @var int|null
      */
-    private int|null $merchant_id;
+    private int|null $merchant_id = null;
 
     /**
      * Config constructor.
@@ -88,7 +88,7 @@ class Config
      */
     public function getImportDir(): string
     {
-        return $this->merchant_id ? $this->importDir.DIRECTORY_SEPARATOR.$this->merchant_id : $this->importDir ;
+        return $this->merchant_id ? $this->importDir.DIRECTORY_SEPARATOR.$this->merchant_id : $this->importDir;
     }
 
     /**
