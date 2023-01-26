@@ -132,7 +132,7 @@ class CatalogService extends AbstractService
     public function complete(): string
     {
         $this->authService->auth();
-        $this->loaderService->clearImportDirectory();
+        //$this->loaderService->clearImportDirectory();
         $this->categoryService->afterComplete();
 
         $response = "success\n";
