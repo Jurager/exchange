@@ -43,7 +43,7 @@ class ExchangeServiceProvider extends ServiceProvider
 
                 // Run prunable command
                 //
-                $schedule->command('catalog:prune')->everyTenMinutes();
+                $schedule->command('exchange:prune')->everyTenMinutes();
             });
         }
     }
