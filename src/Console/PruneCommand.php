@@ -1,6 +1,6 @@
 <?php
 
-namespace Jurager\Exchange\Console\Commands;
+namespace Jurager\Exchange\Console;
 
 use Illuminate\Console\Command;
 use Jurager\Exchange\Services\FileLoaderService;
