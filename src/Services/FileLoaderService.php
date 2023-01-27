@@ -77,7 +77,7 @@ class FileLoaderService
     public function clearImportDirectory(): void
     {
         $now = time();
-        $tmp_files = glob($this->config->getImportDir() . DIRECTORY_SEPARATOR . '*.*', GLOB_NOSORT);
+        $tmp_files = glob($this->config->getImportDir() . DIRECTORY_SEPARATOR . '*/*.*', GLOB_NOSORT);
 
         if (is_array($tmp_files)) {
             foreach ($tmp_files as $v) {
