@@ -13,9 +13,9 @@ interface GroupInterface extends IdentifierInterface
      * $groups[0]->children - дочерние группы.
      *
      * @param Group[] $groups
-     * @param string $merchant_id
+     * @param string $source_id
      *
      * @return void
      */
-    public static function createTree1c($groups, $merchant_id);
+    public static function createTree1c($groups, $source_id);
 }

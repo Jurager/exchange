@@ -9,9 +9,9 @@ interface WarehouseInterface extends IdentifierInterface
      * в параметр передаётся массив всех сладов (import.xml > Классификатор > склады)
      *
      * @param $warehouses
-     * @param $merchant_id
+     * @param $source_id
      *
      * @return void
      */
-    public static function createWarehouse1c($warehouses, $merchant_id);
+    public static function createWarehouse1c($warehouses, $source_id);
 }

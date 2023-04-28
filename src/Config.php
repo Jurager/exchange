@@ -54,7 +54,7 @@ class Config
     /**
      * @var int|null
      */
-    private int|null $merchant_id = null;
+    private int|null $source_id = null;
 
     /**
      * Config constructor.
@@ -88,7 +88,7 @@ class Config
      */
     public function getImportDir(): string
     {
-        return $this->merchant_id ? $this->importDir.DIRECTORY_SEPARATOR.$this->merchant_id : $this->importDir;
+        return $this->source_id ? $this->importDir.DIRECTORY_SEPARATOR.$this->source_id : $this->importDir;
     }
 
     /**
@@ -186,20 +186,20 @@ class Config
     }
 
     /**
-     * @param int $merchant_id
+     * @param int $source_id
      *
      * @return void
      */
-    public function setMerchant($merchant_id)
+    public function setSource($source_id)
     {
-        $this->merchant_id = $merchant_id;
+        $this->source_id = $source_id;
     }
 
     /**
      * @return string|null
      */
-    public function getMerchant() : ?string
+    public function getSource() : ?string
     {
-        return (string) $this->merchant_id;
+        return (string) $this->source_id;
     }
 }

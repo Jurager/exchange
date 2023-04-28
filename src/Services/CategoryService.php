@@ -81,19 +81,19 @@ class CategoryService
             if ($commerce->classifier->xml->Свойства) {
 
                 if ($productClass = $this->getProductClass()) {
-                    $productClass::createProperties1c($commerce->classifier->getProperties(), $this->config->getMerchant());
+                    $productClass::createProperties1c($commerce->classifier->getProperties(), $this->config->getSource());
                 }
             } else if ($commerce->classifier->xml) {
                 if ($warehouseClass = $this->getWarehouseClass()) {
-                    $warehouseClass::createWarehouse1c($commerce->classifier->getWarehouses(), $this->config->getMerchant());
+                    $warehouseClass::createWarehouse1c($commerce->classifier->getWarehouses(), $this->config->getSource());
                 }
 
                 if ($groupClass = $this->getGroupClass()) {
-                    $groupClass::createTree1c($commerce->classifier->getGroups(), $this->config->getMerchant());
+                    $groupClass::createTree1c($commerce->classifier->getGroups(), $this->config->getSource());
                 }
 
                 if ($PriceTypeClass = $this->getPriceTypeClass()) {
-                    $PriceTypeClass::createPriceTypes1c($commerce->classifier->getPriceTypes(), $this->config->getMerchant());
+                    $PriceTypeClass::createPriceTypes1c($commerce->classifier->getPriceTypes(), $this->config->getSource());
                 }
             }
         } else {
@@ -103,7 +103,7 @@ class CategoryService
 
             foreach ($commerce->catalog->getProducts() as $product) {
 
-                $model = $productClass::createModel1c($product, $this->config->getMerchant());
+                $model = $productClass::createModel1c($product, $this->config->getSource());
 
                 if ($model === null) {
                     throw new ExchangeException("Модель продукта не найдена, проверьте реализацию $productClass::createModel1c");
@@ -137,7 +137,7 @@ class CategoryService
 
             $productId = $offer->id;
 
-            $product = $productClass::findProductBy1c($productId);
+            $product = $productClass::findProductBy1c($productId, $this->config->getSource());
 
             if ($product) {
                 $price = $offer->getPrices();
@@ -161,7 +161,7 @@ class CategoryService
         foreach ($commerce->offerPackage->getOffers() as $offer) {
 
             $productId = $offer->id;
-            $product = $productClass::findProductBy1c($productId);
+            $product = $productClass::findProductBy1c($productId, $this->config->getSource());
 
             if ($product) {
                 $rest = $offer->getRest();
@@ -265,7 +265,7 @@ class CategoryService
             $path = $this->config->getFullPath(basename($image->path));
 
             if (file_exists($path)) {
-                $model->addImage1c($this->config->getMerchant().'/'.basename($image->path), $image->caption);
+                $model->addImage1c($this->config->getSource().'/'.basename($image->path), $image->caption);
 
                 break;
             }
@@ -283,7 +283,7 @@ class CategoryService
     protected function afterProductsSync(): void
     {
         if (is_array($this->_ids)) {
-            $event = new AfterProductsSync($this->_ids, $this->config->getMerchant());
+            $event = new AfterProductsSync($this->_ids, $this->config->getSource());
 
             $this->dispatcher->dispatch($event);
         }
@@ -311,7 +311,7 @@ class CategoryService
 
     public function afterComplete(): void
     {
-        $event = new AfterComplete($this->config->getMerchant());
+        $event = new AfterComplete($this->config->getSource());
 
         $this->dispatcher->dispatch($event);
     }
