@@ -89,11 +89,11 @@ interface ProductInterface extends IdentifierInterface
      * import.xml > Классификатор > Свойства > Свойство > ВариантыЗначений > Справочник
      *
      * @param $properties
-     * @param string $merchant_id
+     * @param string $source_id
      *
      * @return mixed
      */
-    public static function createProperties1c($properties, string $merchant_id);
+    public static function createProperties1c($properties, string $source_id);
 
     /**
      * @param Offer $offer
@@ -104,16 +104,16 @@ interface ProductInterface extends IdentifierInterface
 
     /**
      * @param Product $product
-     * @param string $merchant_id
+     * @param string $source_id
      *
      * @return self
      */
-    public static function createModel1c($product, $merchant_id);
+    public static function createModel1c($product, $source_id);
 
     /**
      * @param string $id
-     *
+     * @param string $source_id
      * @return ProductInterface|null
      */
-    public static function findProductBy1c(string $id): ?self;
+    public static function findProductBy1c(string $id, string $source_id): ?self;
 }

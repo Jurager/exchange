@@ -33,7 +33,7 @@ class AuthService
     /**
      * @var null
      */
-    private $merchant_id;
+    private $source_id;
 
     /**
      * AuthService constructor.
@@ -59,7 +59,7 @@ class AuthService
             $service = new $service();
             $arr = $service->checkAuth($this->request->server->get('PHP_AUTH_USER'), $this->request->server->get('PHP_AUTH_PW'));
             $auth_valid = $arr->result;
-            $this->merchant_id = $arr->merchant_id;
+            $this->source_id = $arr->source_id;
         } else {
             $auth_valid = $this->request->server->get('PHP_AUTH_USER') === $this->config->getLogin() &&
                 $this->request->server->get('PHP_AUTH_PW') === $this->config->getPassword();
@@ -73,10 +73,10 @@ class AuthService
             $response .= 'timestamp='.time();
             if ($this->session instanceof SessionInterface) {
                 $this->session->set(self::SESSION_KEY.'_auth', $this->config->getLogin());
-                $this->session->set(self::SESSION_KEY.'_merchant', $this->merchant_id);
+                $this->session->set(self::SESSION_KEY.'_source', $this->source_id);
             } elseif ($this->session instanceof Session) {
                 $this->session->put(self::SESSION_KEY.'_auth', $this->config->getLogin());
-                $this->session->put(self::SESSION_KEY.'_merchant', $this->merchant_id);
+                $this->session->put(self::SESSION_KEY.'_source', $this->source_id);
             } else {
                 throw new ExchangeException(sprintf('Session is not insatiable interface %s or %s', SessionInterface::class, Session::class));
             }
@@ -98,8 +98,8 @@ class AuthService
         if (!$user || $user !== $login) {
             throw new ExchangeException('auth error');
         }
-        $merchant_id = $this->session->get(self::SESSION_KEY.'_merchant');
-        $this->config->setMerchant($merchant_id);
+        $source_id = $this->session->get(self::SESSION_KEY.'_source');
+        $this->config->setSource($source_id);
     }
 
     private function setSession(): void
