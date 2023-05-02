@@ -105,7 +105,7 @@ class OfferService
          */
         $class = $this->modelBuilder->getInterfaceClass($this->config, ProductInterface::class);
 
-        return $class::findProductBy1c($id);
+        return $class::findProductBy1c($id, $this->config->getSource());
     }
 
 
