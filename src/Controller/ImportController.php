@@ -32,26 +32,20 @@ class ImportController extends Controller
             if ($type === 'catalog') {
 
                 if (!method_exists($service, $mode)) {
-                    throw new ExchangeException('not correct request, class ExchangeCML not found');
+                    throw new ExchangeException('Not correct request, class not found');
                 }
 
-                $response = $service->$mode();
-
-                return response($response, 200, ['Content-Type', 'text/plain']);
+                return response($service->$mode(), 200, ['Content-Type', 'text/plain']);
             }
 
-            throw new LogicException(sprintf('Logic for method %s not released', $type));
+            throw new LogicException(sprintf('Logic for method %s is not released', $type));
 
         } catch (ExchangeException $e) {
 
-            Log::error("exchange_1c: failure \n".$e->getMessage()."\n".$e->getFile()."\n".$e->getLine()."\n");
-            
-            $message = iconv('utf-8', 'windows-1251', $e->getMessage());
+            Log::error("exchange: failure \n".$e->getMessage()."\n".$e->getFile()."\n".$e->getLine()."\n");
 
             $response = "failure\n";
-            $response .= $message."\n";
-            $response .= $e->getFile()."\n";
-            $response .= $e->getLine()."\n";
+            $response .= iconv('utf-8', 'windows-1251', $e->getMessage());
 
             return response($response, 500, ['Content-Type', 'text/plain']);
         }
