@@ -1,7 +1,7 @@
 # Jurager/Exchange
 [![Latest Stable Version](https://poser.pugx.org/jurager/exchange/v/stable)](https://packagist.org/packages/jurager/exchange)
 [![Total Downloads](https://poser.pugx.org/jurager/exchange/downloads)](https://packagist.org/packages/jurager/exchange)
-[![PHP Version Require](http://poser.pugx.org/jurager/exchange/require/php)](https://packagist.org/packages/jurager/exchange)
+[![PHP Version Require](https://poser.pugx.org/jurager/exchange/require/php)](https://packagist.org/packages/jurager/exchange)
 [![License](https://poser.pugx.org/jurager/exchange/license)](https://packagist.org/packages/jurager/exchange)
 
 Пакет признан облегчить интеграцию 1С предприятия и сайта на Laravel. 
